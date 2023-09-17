@@ -47,6 +47,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           if (value!.isEmpty) {
             return "Hеобходимо заполнить данные";
           }
+          if (widget.validator != null) {
+            if (!widget.validator!.call(value)) {
+              return "Please input correct value";
+            }
+          }
           return null;
         },
         inputFormatters: [if (widget.formatter != null) widget.formatter!],
