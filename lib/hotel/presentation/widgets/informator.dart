@@ -6,8 +6,15 @@ import '../../../core/constants/constants.dart';
 class Informator extends StatelessWidget {
   final String infoKey;
   final String infoValue;
+  final Color? valueColor;
+  final bool? isFixed;
 
-  const Informator({super.key, required this.infoKey, required this.infoValue});
+  const Informator(
+      {super.key,
+      this.isFixed,
+      required this.infoKey,
+      required this.infoValue,
+      this.valueColor});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +26,22 @@ class Informator extends StatelessWidget {
         children: [
           Text(
             infoKey,
+            softWrap: true,
             style: CustomStyles.sfRegular.copyWith(
               color: CustomColors.deepGrey,
               fontSize: 16.sp,
             ),
           ),
-          SizedBox(
-            width: 203.sp,
-            child: Text(
-              infoValue,
-              softWrap: true,
-              style: CustomStyles.sfRegular.copyWith(
-                color: Colors.black,
-                fontSize: 16.sp,
+          ClipRRect(
+            child: SizedBox(
+              width: isFixed == null ? 203.sp : null,
+              child: Text(
+                infoValue,
+                softWrap: true,
+                style: CustomStyles.sfRegular.copyWith(
+                  color: valueColor ?? Colors.black,
+                  fontSize: 16.sp,
+                ),
               ),
             ),
           ),

@@ -38,21 +38,14 @@ class _RoomPageState extends State<RoomPage> {
         if (state is RoomLoading || state is RoomInitial) {
           return const LoadingPage();
         }
-        final rooms = context
-            .watch<RoomBloc>()
-            .state
-            .rooms;
+        final rooms = context.watch<RoomBloc>().state.rooms;
         print(rooms.length);
         return Scaffold(
           backgroundColor: CustomColors.backgroundColor,
           appBar: AppBar(
             backgroundColor: Colors.white,
             centerTitle: true,
-            title: Text(context
-                .read<HotelBloc>()
-                .state
-                .hotel!
-                .name,
+            title: Text(context.read<HotelBloc>().state.hotel!.name,
                 overflow: TextOverflow.ellipsis,
                 style: CustomStyles.sfProMedium.copyWith(fontSize: 18.sp)),
           ),
@@ -72,53 +65,8 @@ class _RoomPageState extends State<RoomPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         ///Slider image
-                        SizedBox(
-                          height: 250.sp,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          child: PageView(
-                            controller: pageController,
-                            children: [
-                              for (int i2 = 0;
-                              i2 < rooms[i].imageUrls.length;
-                              i2++)
-                                Padding(
-                                  padding:
-                                  EdgeInsets.symmetric(horizontal: 20.sp),
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    child: Image.network(
-                                      rooms[i].imageUrls[i2],
-                                      fit: BoxFit.fill,
-                                      loadingBuilder: (BuildContext context,
-                                          Widget child,
-                                          ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null)
-                                          return child;
-                                        return Center(
-                                          child: CircularProgressIndicator(
-                                            value: loadingProgress
-                                                .expectedTotalBytes !=
-                                                null
-                                                ? loadingProgress
-                                                .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                                : null,
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                )
-                            ],
-                          ),
-                        ),
+                        AnimationPageIndicator(imageUrls: rooms[i].imageUrls),
                         SizedBox(
                           height: 10.sp,
                         ),
@@ -158,7 +106,7 @@ class _RoomPageState extends State<RoomPage> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       "Подробнее о номере ",
@@ -201,10 +149,7 @@ class _RoomPageState extends State<RoomPage> {
 
                         ///Choosing room
                         Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.sp, vertical: 28.sp),
                           color: Colors.white,

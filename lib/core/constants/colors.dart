@@ -15,4 +15,5 @@ sealed class CustomColors {
   static const textBlack = Color(0xFF2C3035);
   static const listTileColor = Color(0xFFFBFBFC);
   static Color descriptionTextColor = Colors.black.withOpacity(0.9);
+  static const errorTextFieldColor = Color(0x15EB5757);
 }

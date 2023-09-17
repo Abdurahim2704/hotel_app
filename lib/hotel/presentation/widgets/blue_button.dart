@@ -25,11 +25,9 @@ class BlueButton extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: CustomStyles.sfProMedium.copyWith(
             color: Colors.white,
             fontSize: 16.sp,
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w500,
           ),
         ),
       ),

@@ -1,16 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:hotel_app/hotel/data/models/room_model.dart';
-import 'package:retrofit/http.dart';
+import 'package:hotel_app/hotel/data/models/models.dart';
 
 import '../../../../config/apis.dart';
 
-part 'room_api_service.g.dart';
+class RoomApiService {
+  static Future<List<Room>> getRooms() async {
+    final dio = Dio();
 
-@RestApi(baseUrl: Apis.baseUrl + Apis.roomApi)
-abstract class RoomApiService {
+    final response = await dio.get(Apis.baseUrl + Apis.roomApi);
+    if (response.statusCode == 200) {
+      final jsonRooms =
+          (response.data as Map<String, Object?>)["rooms"] as List;
+      final rooms = jsonRooms
+          .map((e) => Room.fromJson(e as Map<String, Object?>))
+          .toList();
+      return rooms;
+    }
 
-  factory RoomApiService(Dio dio) = _RoomApiService;
-
-  @GET("")
-  Future<List<Room>> getRooms();
+    return [];
+  }
 }

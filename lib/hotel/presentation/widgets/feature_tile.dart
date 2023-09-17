@@ -25,20 +25,16 @@ class FeatureTile extends StatelessWidget {
               ),
         title: Text(
           text,
-          style: TextStyle(
+          style: CustomStyles.sfProMedium.copyWith(
             color: CustomColors.textBlack,
             fontSize: 16.sp,
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w500,
           ),
         ),
         subtitle: Text(
           'Самое необходимое',
-          style: TextStyle(
+          style: CustomStyles.sfProMedium.copyWith(
             color: CustomColors.deepGrey,
             fontSize: 14.sp,
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w500,
           ),
         ),
         trailing: Icon(

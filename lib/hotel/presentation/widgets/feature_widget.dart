@@ -17,11 +17,9 @@ class FeaturesWidget extends StatelessWidget {
           color: CustomColors.lightGrey),
       child: Text(
         text,
-        style: TextStyle(
+        style: CustomStyles.sfProMedium.copyWith(
           color: CustomColors.deepGrey,
           fontSize: 16,
-          fontFamily: 'SF Pro Display',
-          fontWeight: FontWeight.w500,
         ),
       ),
     );

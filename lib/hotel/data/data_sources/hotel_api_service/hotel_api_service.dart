@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hotel_app/config/apis.dart';
-import 'package:hotel_app/hotel/data/models/hotel_model.dart';
+import 'package:hotel_app/hotel/data/models/models.dart';
 import 'package:retrofit/http.dart';
 
 part 'hotel_api_service.g.dart';

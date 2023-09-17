@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:hotel_app/hotel/data/data_sources/hotel_api_service/hotel_api_service.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/hotel_model.dart';
+import '../../../data/models/models.dart';
 
 part 'hotel_event.dart';
 part 'hotel_state.dart';

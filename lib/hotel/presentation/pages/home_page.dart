@@ -61,45 +61,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ///Slider image
-                      SizedBox(
-                        height: 230.sp,
-                        width: MediaQuery.of(ctx).size.width,
-                        child: PageView(
-                          controller: pageController,
-                          children: [
-                            for (int i = 0; i < hotel.imageUrls.length; i++)
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 20.sp),
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20)),
-                                  child: Image.network(
-                                    hotel.imageUrls[i],
-                                    fit: BoxFit.fill,
-                                    loadingBuilder: (BuildContext context,
-                                        Widget child,
-                                        ImageChunkEvent? loadingProgress) {
-                                      if (loadingProgress == null) return child;
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          value: loadingProgress
-                                                      .expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              )
-                          ],
-                        ),
-                      ),
+                      AnimationPageIndicator(imageUrls: hotel.imageUrls),
                       SizedBox(
                         height: 10.sp,
                       ),

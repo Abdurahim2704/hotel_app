@@ -1,0 +1,1 @@
+enum ValidationStatus { valid, invalid }
